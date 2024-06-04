@@ -1,0 +1,18 @@
+# -*- mode: yaml; -*-
+---
+# enable all checks, but then blacklist as needed
+# https://clang.llvm.org/extra/clang-tidy/checks/list.html
+UseColor: true
+
+Checks: "
+    bugprone-*,
+	-bugprone-easily-swappable-parameters,
+    cppcoreguidelines-*,
+    clang-*,
+    modernize-*,
+    google-*,
+    performance-*,
+    readability-*,
+"
+
+WarningsAsErrors: "*"

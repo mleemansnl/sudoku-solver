@@ -1,0 +1,23 @@
+{
+    //"image": "mcr.microsoft.com/vscode/devcontainers/universal:1.3-focal",
+    "name": "customdev",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {
+            "VARIANT": "1.3-focal"
+        }
+    },
+    "features": {
+        "ghcr.io/balazs23/devcontainers-features/bazel": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack",
+                "BazelBuild.vscode-bazel"
+            ]
+        }
+    }
+}
