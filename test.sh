@@ -1,2 +1,3 @@
+# Utility script to run all tests
 
 bazel test --test_output=all //...
