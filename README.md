@@ -1,6 +1,6 @@
 # Sudoku Solver using Algorithm X & Dancing Links (DLX)
 
-Sudoku Solver is a command-line tool for solving Sudoku puzzles of size 4x4, 
+Sudoku Solver is a command-line tool for solving Sudoku puzzles of size 4x4,
 traditional 9x9, and 16x16.
 
 The code presented here is a reference implementation of Algorithm X and
@@ -49,7 +49,7 @@ cd sudoku-solver/
 code .
 ```
 
-Run the `Dev Containers: Open Folder in Container...` command from the Command 
+Run the `Dev Containers: Open Folder in Container...` command from the Command
 Palette (F1) or quick actions Status bar item.
 
 ### Build

@@ -2,6 +2,7 @@
 #define LIBDLX_DANCING_LINK_NODE_HPP_
 
 #include <any>
+#include <concepts>
 #include <memory>
 #include <vector>
 
@@ -47,7 +48,7 @@ class DancingLinkNode {
    * at root. The left/right references are updated to reflect the order of
    * nodes provided to this methd.
    */
-  template <typename... Args>
+  template <std::convertible_to<DancingLinkNode *>... Args>
   static void makeRow(DancingLinkNode *root, Args... nodes) {
     for (DancingLinkNode *node : {nodes...}) {
       node->insertLeftOf(root);

@@ -9,6 +9,6 @@ filegroup(
 
 # Target for linting Markdown files
 markdown_library(
-    name = "all_markdown",
+    name = "md",
     srcs = glob(["**/*.md"]),
 )
