@@ -15,9 +15,9 @@ git_repository(
 # Dependencies for Markdown files
 
 # markdownlint linter
-DWTJ_RULES_MARKDOWN_COMMIT = "5fcac481becb6e57c7240ea42652ad9ddef36181"
+DWTJ_RULES_MARKDOWN_COMMIT = "f65f338a9e7ed15fe7b2630c7e1cbf47e81a2837"
 
-DWTJ_RULES_MARKDOWN_SHA256 = "b4250fc7c13b55df27507e8d53da4fab61cfdc7c3f4b6002a8a312796f678a91"
+DWTJ_RULES_MARKDOWN_SHA256 = "f2ea09f870045b0732002a20dd62ad838862f5a7b0f825b47939fc1c784daa3e"
 
 http_archive(
     name = "dwtj_rules_markdown",

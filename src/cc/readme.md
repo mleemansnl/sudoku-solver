@@ -1,12 +1,18 @@
+# C++ implementation for Algorithm X & Dancing Links (DLX)
 
-Coding standards:
- - https://stackoverflow.com/questions/2360734/whats-a-good-directory-structure-for-larger-c-projects-using-makefile
- - https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1204r0.html
- - https://github.com/vector-of-bool/pitchfork
- 
- - https://google.github.io/styleguide/cppguide.html
+## Packages
 
- https://github.com/aspect-build/rules_lint?tab=readme-ov-file
- https://github.com/erenon/bazel_clang_tidy
+- libdlx defines the Dancing Links (DLX) data structure and
+  Algorithm X solver for generic exact cover problem.
+- libsudoku defines a Sudoku solver that models models a Sudoku puzzle
+  as an exact cover problem and solves the puzzle using libdlx.
+- main defines the cli binary reading in a partial sudoku via stdin and
+  outputtring the solution on stdout.
 
- >  bazel build //src/cc/libsudoku --aspects @bazel_clang_tidy//clang_tidy:clang_tidy.bzl%clang_tidy_aspect --output_groups=report
+## Usage
+
+To run the sudoku solver with an example input, use:
+
+```shell
+bazel run //src/cc/main:sudoku
+```
