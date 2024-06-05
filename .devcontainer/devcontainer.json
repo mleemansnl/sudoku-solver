@@ -3,14 +3,9 @@
     "name": "customdev",
     "build": {
         "dockerfile": "Dockerfile",
-        "context": "..",
-        "args": {
-            "VARIANT": "1.3-focal"
-        }
+        "context": ".."
     },
-    "features": {
-        "ghcr.io/balazs23/devcontainers-features/bazel": {}
-    },
+    "features": {},
     "customizations": {
         "vscode": {
             "extensions": [

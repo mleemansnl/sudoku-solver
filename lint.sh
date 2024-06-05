@@ -7,6 +7,8 @@ bazel build //src/cc/... \
   --@bazel_clang_tidy//:clang_tidy_config=//:clang_tidy_config
 
 # Lint Markdown files using markdownlint
-# \todo fix markdownlint-cli by upgrading node to >= 15.0 in .devcontainer
-#bazel build //:all_markdown \
-#  --aspects @dwtj_rules_markdown//markdown:aspects.bzl%markdownlint_aspect
+# Note: the markdown rule exits with only an error, not showing the markdownlint 
+# violations, hence the `|| cat` to show the linter feedback upon violations.
+bazel build //:md \
+  --aspects @dwtj_rules_markdown//markdown:aspects.bzl%markdownlint_aspect \
+   || cat bazel-bun/md.markdownlint.log
