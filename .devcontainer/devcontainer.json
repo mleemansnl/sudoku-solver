@@ -17,7 +17,8 @@
                 "ms-vscode.cpptools",
                 "ms-vscode.cpptools-extension-pack",
                 "BazelBuild.vscode-bazel",
-                "DavidAnson.vscode-markdownlint"
+                "DavidAnson.vscode-markdownlint",
+                "vscjava.vscode-java-pack"
             ]
         }
     }
