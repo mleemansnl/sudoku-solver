@@ -1,4 +1,4 @@
-package java.com.sudokusolver.libdlx;
+package com.sudokusolver.libdlx;
 
 import java.util.List;
 import java.util.ArrayList;

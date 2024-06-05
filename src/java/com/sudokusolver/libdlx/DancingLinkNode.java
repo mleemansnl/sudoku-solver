@@ -1,4 +1,4 @@
-package java.com.sudokusolver.libdlx;
+package com.sudokusolver.libdlx;
 
 /**
  * The DancingLinkNode represents a single node in the Dancing Links
@@ -13,13 +13,12 @@ package java.com.sudokusolver.libdlx;
  * instantiated directly. By creating nodes via DancingLinkHeader, the header
  * can own the memory for its nodes. See also \link DancingLinkHeader.
  *
- * Each node has weak references its four neighbors: left, right, up, down.
- * Via the remove and reinsert operators, a node can be removed and reinserted
- * into it's horizontal (left-right) or vertical (up-down) lists in O(1) time.
+ * Each node has weak references its four neighbors: left, right, up, down. Via
+ * the remove and reinsert operators, a node can be removed and reinserted into
+ * it's horizontal (left-right) or vertical (up-down) lists in O(1) time.
  *
- * A node also can contain a data element of any type.
- * This data element can be used as meta-data for bookkeeping
- * when modelling exact cover problems.
+ * A node also can contain a data element of any type. This data element can be
+ * used as meta-data for bookkeeping when modelling exact cover problems.
  */
 public class DancingLinkNode {
 
@@ -53,13 +52,26 @@ public class DancingLinkNode {
     }
 
     /**
+     * Helper method for combinig multiple nodes into a horizontally linked list.
+     *
+     * This convinience method will insert each node into the linked list starting
+     * at root. The left/right references are updated to reflect the order of nodes
+     * provided to this methd.
+     */
+    static void makeRow(DancingLinkNode root, DancingLinkNode... nodes) {
+        for (DancingLinkNode node : nodes) {
+            node.insertLeftOf(root);
+        }
+    }
+
+    /**
      * Inserts this node to the left of the given other node.
      *
-     * If the other node is the root of a list, then this node
-     * will end up effectively at the end of that list.
+     * If the other node is the root of a list, then this node will end up
+     * effectively at the end of that list.
      *
-     * \param other the node to which insert this left of.
-     * \post other.left == this && this.right == other
+     * \param other the node to which insert this left of. \post other.left == this
+     * && this.right == other
      */
     public void insertLeftOf(DancingLinkNode other) {
         // Before:
@@ -79,11 +91,11 @@ public class DancingLinkNode {
     /**
      * Inserts this node up of the given other node.
      *
-     * If the other node is the root of a list, then this node
-     * will end up effectively at the end of that list.
+     * If the other node is the root of a list, then this node will end up
+     * effectively at the end of that list.
      *
-     * \param other the node to which insert this left of.
-     * \post other.up == this && this.down == other
+     * \param other the node to which insert this left of. \post other.up == this &&
+     * this.down == other
      */
     public void insertUpOf(DancingLinkNode other) {
         // Before:
@@ -101,8 +113,8 @@ public class DancingLinkNode {
     }
 
     /**
-     * Removes this node from the list of its left and right neighbors, but keeps
-     * a reference to its old neighbors.
+     * Removes this node from the list of its left and right neighbors, but keeps a
+     * reference to its old neighbors.
      *
      * This method uses the Dancing Links property to remove itself from a list in
      * O(1) while keeping a references to efficiently reinsert itself afterwards.
@@ -134,8 +146,8 @@ public class DancingLinkNode {
      * This method is designed to facilitate in the \link Solver::_cover() action.
      * This method's reverse is \link DancingLinkNode::reinsertVertical() .
      *
-     * \post the up neighbor poinst to the down neighbor, skipping this node
-     * \post this node keeps a reference to its up and down neighbors.
+     * \post the up neighbor poinst to the down neighbor, skipping this node \post
+     * this node keeps a reference to its up and down neighbors.
      */
     public void removeVertical() {
         // Before:
@@ -152,12 +164,11 @@ public class DancingLinkNode {
      * Reinserts this node to the list of its left and right neighbors.
      *
      * This method uses the Dancing Links property to reinsert itself to a list in
-     * O(1) based on its existing references kept after it removed itself from
-     * that list earlier.
+     * O(1) based on its existing references kept after it removed itself from that
+     * list earlier.
      *
-     * This method is designed to facilitate in the \link Solver::_uncover()
-     * action. This method's reverse is \link DancingLinkNode::removeHorizontal()
-     * .
+     * This method is designed to facilitate in the \link Solver::_uncover() action.
+     * This method's reverse is \link DancingLinkNode::removeHorizontal() .
      *
      * \post the left neighbor and right neighbor again point to this node.
      */
@@ -174,11 +185,11 @@ public class DancingLinkNode {
      * Reinserts this node to the list of its up and down neighbors.
      *
      * This method uses the Dancing Links property to reinsert itself to a list in
-     * O(1) based on its existing references kept after it removed itself from
-     * that list earlier.
+     * O(1) based on its existing references kept after it removed itself from that
+     * list earlier.
      *
-     * This method is designed to facilitate in the \link Solver::_uncover()
-     * action. This method's reverse is \link DancingLinkNode::removeVertical() .
+     * This method is designed to facilitate in the \link Solver::_uncover() action.
+     * This method's reverse is \link DancingLinkNode::removeVertical() .
      *
      * \post the up neighbor and down neighbor again point to this node.
      */
@@ -199,16 +210,14 @@ public class DancingLinkNode {
     }
 
     /**
-     * Returns the left neighbor of this node in the horizontal doubly linked
-     * list.
+     * Returns the left neighbor of this node in the horizontal doubly linked list.
      */
     public DancingLinkNode getLeft() {
         return this.left;
     }
 
     /**
-     * Returns the right neighbor of this node in the horizontal doubly linked
-     * list.
+     * Returns the right neighbor of this node in the horizontal doubly linked list.
      */
     public DancingLinkNode getRight() {
         return this.right;
@@ -229,18 +238,16 @@ public class DancingLinkNode {
     }
 
     /**
-     * Returns the data element associated with this node.
-     * This data element can be used as meta-data for bookkeeping
-     * when modelling exact cover problems.
+     * Returns the data element associated with this node. This data element can be
+     * used as meta-data for bookkeeping when modelling exact cover problems.
      */
     public void setData(Object data) {
         this.data = data;
     }
 
     /**
-     * Sets the data element associated with this node.
-     * This data element can be used as meta-data for bookkeeping
-     * when modelling exact cover problems.
+     * Sets the data element associated with this node. This data element can be
+     * used as meta-data for bookkeeping when modelling exact cover problems.
      */
     public Object getData() {
         return this.data;

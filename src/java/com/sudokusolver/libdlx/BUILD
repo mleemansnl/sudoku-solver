@@ -2,15 +2,16 @@ java_library(
     name = "libdlx",
     srcs = glob(
         ["*.java"],
-        exclude = ["Test*.java"],
+        exclude = ["*Test.java"],
     ),
     visibility = ["//visibility:public"],
 )
 
 java_test(
-    name = "unittest",
+    name = "DancingLinkNodeTest",
     size = "small",
-    srcs = glob(["Test*.java"]),
+    srcs = ["DancingLinkNodeTest.java"],
+    test_class = "com.sudokusolver.libdlx.DancingLinkNodeTest",
     deps = [
         ":libdlx",
         "@maven//:junit_junit",
