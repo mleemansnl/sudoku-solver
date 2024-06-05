@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 6,
-  "moduleFileHash": "519923c121981981d39852ee7ed9848fd4e80fe214a1345237b90287dde8d226",
+  "moduleFileHash": "faec4e6234d233ddcdfa2af4d5fac564b39e236c91c37f74d42a3a5edc92b463",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -17,10 +17,10 @@
   },
   "moduleDepGraph": {
     "<root>": {
-      "name": "sudoku",
+      "name": "sudoku-solver",
       "version": "1.0",
       "key": "<root>",
-      "repoName": "sudoku",
+      "repoName": "sudoku-solver",
       "executionPlatformsToRegister": [],
       "toolchainsToRegister": [],
       "extensionUsages": [],

@@ -1,6 +1,21 @@
+"""
+Sudoku Solver is a command-line tool for solving Sudoku puzzles.
+
+The code presented here is a reference implementation of Algorithm X and Dancing Links (DLX) 
+as originally described by Donald Knuth.For more information, check the documentation in this 
+repository or the following references:
+
+- [Wikipedia > Knuth's Algoritm X](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X)
+- [Wikipedia > Dancing Links](https://en.wikipedia.org/wiki/Dancing_Links)
+- [Arxiv > Knuth's original paper on Dancing Links](https://arxiv.org/abs/cs/0011047)
+"""
+
 module(
-    name = "sudoku",
+    name = "sudoku-solver",
     version = "1.0",
 )
 
+# Dependencies for C++ code
+
+# GTest C++ unit test framework
 bazel_dep(name = "googletest", version = "1.14.0")
