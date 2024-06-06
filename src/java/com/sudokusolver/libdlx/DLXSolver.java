@@ -38,15 +38,14 @@ import java.util.Optional;
  * candidate partial solution. Uncover relies on the efficient O(1) reinsert
  * operations in \link DancingLinkNode.
  */
-public class Solver {
+public class DLXSolver {
 
     /**
      * Constructs a new Solver based on the given matrix.
      *
-     * \param matrix A matrix modelling the exact cover problem to be solved. The
-     * solver owns the memory of this matrix after construction.
+     * @param matrix A matrix modelling the exact cover problem to be solved.
      */
-    public Solver(DancingLinksMatrix matrix) {
+    public DLXSolver(DancingLinksMatrix matrix) {
         this.matrix = matrix;
         this.solution = new ArrayList<>();
     }
@@ -54,8 +53,8 @@ public class Solver {
     /**
      * Solve for the provided matrix using an Alogrithm X implementation.
      *
-     * \return If no solution is found, std::nullopt is returned. If a solution is
-     * found, a Solution object is returned.
+     * @return If no solution is found, std::nullopt is returned. If a solution is
+     *         found, a Solution object is returned.
      */
     public Optional<List<DancingLinkNode>> solve() {
         if (this.search()) {
@@ -77,9 +76,9 @@ public class Solver {
         this.solution.add(rowRoot);
 
         // Cover every column in this row
-        Solver.cover(rowRoot.getHeader());
+        DLXSolver.cover(rowRoot.getHeader());
         for (DancingLinkNode node = rowRoot.getRight(); node != rowRoot; node = node.getRight()) {
-            Solver.cover(node.getHeader());
+            DLXSolver.cover(node.getHeader());
         }
     }
 
@@ -95,8 +94,8 @@ public class Solver {
      * This function implements one recursive call, implementing the steps
      * documented above and calling search() recursively till a solution is found.
      *
-     * \return if a solution has been found \post if return is true, then
-     * this->solution holds a valid solution.
+     * @return if a solution has been found
+     * @post if return is true, then this.solution holds a valid solution.
      */
     private boolean search() {
         DancingLinkHeader root = this.matrix.getRoot();
@@ -121,7 +120,7 @@ public class Solver {
         DancingLinkHeader targetHeader = optHeader.get();
 
         // cover this header column
-        Solver.cover(targetHeader);
+        DLXSolver.cover(targetHeader);
 
         // try every placement part of this column
         // add it to the solution, recurse solve the smaller matrix,
@@ -132,7 +131,7 @@ public class Solver {
 
             // cover all other columns in this row
             for (DancingLinkNode node = row.getRight(); node != row; node = node.getRight()) {
-                Solver.cover(node.getHeader());
+                DLXSolver.cover(node.getHeader());
             }
 
             // recursive search with this row in the solution and all it's columns covered
@@ -145,12 +144,12 @@ public class Solver {
 
             // uncover all columns in row
             for (DancingLinkNode node = row.getLeft(); node != row; node = node.getLeft()) {
-                Solver.uncover(node.getHeader());
+                DLXSolver.uncover(node.getHeader());
             }
         }
 
         // uncover column
-        Solver.uncover(targetHeader);
+        DLXSolver.uncover(targetHeader);
 
         return false;
     }

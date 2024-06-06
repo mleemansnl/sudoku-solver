@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
-public class SolverTest {
+public class DLXSolverTest {
 
     /**
      * Test: Solver can solve basic exact cover example problem.
@@ -44,7 +44,7 @@ public class SolverTest {
         DancingLinkNode.makeRow(node_e2, node_e4);
 
         // Solve for the above matrix
-        Solver solver = new Solver(matrix);
+        DLXSolver solver = new DLXSolver(matrix);
         Optional<List<DancingLinkNode>> result = solver.solve();
 
         // Check solution

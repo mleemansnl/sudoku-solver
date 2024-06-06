@@ -23,11 +23,11 @@ package com.sudokusolver.libdlx;
 public class DancingLinkNode {
 
     /**
-     * Constructs a new DancingLinkNode with a weak reference to the container
-     * header node.
+     * Constructs a new DancingLinkNode with a reference to the container header
+     * node.
      *
-     * \param header A weak reference to the header which will act as a container
-     * and own the memory of this DancingLinkNode.
+     * @param header A reference to the header which will act as a container and own
+     *               the memory of this DancingLinkNode.
      */
     public DancingLinkNode(DancingLinkHeader header) {
         this();
@@ -58,7 +58,7 @@ public class DancingLinkNode {
      * at root. The left/right references are updated to reflect the order of nodes
      * provided to this methd.
      */
-    static void makeRow(DancingLinkNode root, DancingLinkNode... nodes) {
+    public static void makeRow(DancingLinkNode root, DancingLinkNode... nodes) {
         for (DancingLinkNode node : nodes) {
             node.insertLeftOf(root);
         }
@@ -70,8 +70,8 @@ public class DancingLinkNode {
      * If the other node is the root of a list, then this node will end up
      * effectively at the end of that list.
      *
-     * \param other the node to which insert this left of. \post other.left == this
-     * && this.right == other
+     * @param other the node to which insert this left of.
+     * @post other.left == this && this.right == other
      */
     public void insertLeftOf(DancingLinkNode other) {
         // Before:
@@ -94,8 +94,8 @@ public class DancingLinkNode {
      * If the other node is the root of a list, then this node will end up
      * effectively at the end of that list.
      *
-     * \param other the node to which insert this left of. \post other.up == this &&
-     * this.down == other
+     * @param other the node to which insert this left of.
+     * @post other.up == this && this.down == other
      */
     public void insertUpOf(DancingLinkNode other) {
         // Before:
@@ -122,8 +122,8 @@ public class DancingLinkNode {
      * This method is designed to facilitate in the \link Solver::_cover() action.
      * This method's reverse is \link DancingLinkNode::reinsertHorizontal() .
      *
-     * \post the left neighbor point to the right neighbor, skipping this node.
-     * \post this node keeps a reference to its left and right neighbors.
+     * @post the left neighbor point to the right neighbor, skipping this node.
+     * @post this node keeps a reference to its left and right neighbors.
      */
     public void removeHorizontal() {
         // Before:
@@ -146,8 +146,8 @@ public class DancingLinkNode {
      * This method is designed to facilitate in the \link Solver::_cover() action.
      * This method's reverse is \link DancingLinkNode::reinsertVertical() .
      *
-     * \post the up neighbor poinst to the down neighbor, skipping this node \post
-     * this node keeps a reference to its up and down neighbors.
+     * @post the up neighbor poinst to the down neighbor, skipping this node
+     * @post this node keeps a reference to its up and down neighbors.
      */
     public void removeVertical() {
         // Before:
@@ -170,7 +170,7 @@ public class DancingLinkNode {
      * This method is designed to facilitate in the \link Solver::_uncover() action.
      * This method's reverse is \link DancingLinkNode::removeHorizontal() .
      *
-     * \post the left neighbor and right neighbor again point to this node.
+     * @post the left neighbor and right neighbor again point to this node.
      */
     public void reinsertHorizontal() {
         // Before:
@@ -191,7 +191,7 @@ public class DancingLinkNode {
      * This method is designed to facilitate in the \link Solver::_uncover() action.
      * This method's reverse is \link DancingLinkNode::removeVertical() .
      *
-     * \post the up neighbor and down neighbor again point to this node.
+     * @post the up neighbor and down neighbor again point to this node.
      */
     public void reinsertVertical() {
         // Before:

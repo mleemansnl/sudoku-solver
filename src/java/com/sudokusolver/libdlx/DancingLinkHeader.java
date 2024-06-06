@@ -10,11 +10,12 @@ package com.sudokusolver.libdlx;
  *
  * A header keeps tracks of the number of nodes in it's vertical circular doubly
  * linked list. This count property is used the Alogrithm X implementation of
+ * 
  * \link dlx::Solver to optimize on which covering to select. Note that the
  * usage of removeVertical/reinsertVertical intentionally do not update the
  * count property directly.
  *
- * Headers are typically created via \link DancingLinksMatrix::newHeader()
+ * Headers are typically created via @link DancingLinksMatrix::newHeader()
  * instead of instantiated directly. By creating nodes via DancingLinksMatrix,
  * the matrix can own the memory for its header nodes.
  */
@@ -34,9 +35,9 @@ public class DancingLinkHeader extends DancingLinkNode {
      * This header will own the memory to the new node and a weak reference is
      * returned for further setup of the new node.
      *
-     * \post the new node is added to the end of the vertical list (this.up == new
-     * node) \post count is increased to reflect this header containing an
-     * additional node
+     * @post the new node is added to the end of the vertical list (this.up == new
+     *       node)
+     * @post count is increased to reflect this header containing an additional node
      */
     public DancingLinkNode newNode() {
         DancingLinkNode node = new DancingLinkNode(this);

@@ -35,8 +35,8 @@ public class DancingLinksMatrix {
      * This matrix will own the memory to the new header node and a weak reference
      * is returned for further setup of the new header node.
      *
-     * \post the new node is added to the end of the header row list (root.left ==
-     * new node)
+     * @post the new node is added to the end of the header row list (root.left ==
+     *       new node)
      */
     public DancingLinkHeader newHeader() {
         DancingLinkHeader header = new DancingLinkHeader();
