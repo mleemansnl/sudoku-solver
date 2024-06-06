@@ -21,12 +21,15 @@ module(
 bazel_dep(name = "googletest", version = "1.14.0")
 
 # Dependencies for Java code
+# Note: After changing maven artifacts, regenerate maven_install.json using:
+#   $ REPIN=1 bazel run @maven//:pin
 bazel_dep(name = "rules_jvm_external", version = "6.1")
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
     artifacts = [
-        "junit:junit:4.13.2",
-        #"org.junit.jupiter:junit-jupiter-api:5.10.2",
+        #"junit:junit:4.13.2",
+        "org.junit.jupiter:junit-jupiter:5.10.2",
+        "org.junit.platform:junit-platform-console:1.10.2",
     ],
     lock_file = "//:maven_install.json",
 )

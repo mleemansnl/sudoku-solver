@@ -10,10 +10,20 @@ java_library(
 java_test(
     name = "DancingLinkNodeTest",
     size = "small",
-    srcs = ["DancingLinkNodeTest.java"],
-    test_class = "com.sudokusolver.libdlx.DancingLinkNodeTest",
+    srcs = glob(["*Test.java"]),
+    args = [
+        "--select-package",
+        "com.sudokusolver.libdlx",
+    ],
+    main_class = "org.junit.platform.console.ConsoleLauncher",
+    use_testrunner = False,
+    runtime_deps = [
+        "@maven//:org_junit_platform_junit_platform_console",
+    ],
     deps = [
         ":libdlx",
-        "@maven//:junit_junit",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_jupiter_junit_jupiter_params",
     ],
 )

@@ -1,8 +1,8 @@
 package com.sudokusolver.libdlx;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class DancingLinkNodeTest {
 
@@ -10,7 +10,7 @@ public class DancingLinkNodeTest {
      * Test: constructor sets-up doubly-linked lists initial state correctly
      */
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         DancingLinkNode node = new DancingLinkNode(null);
 
         assertEquals(node, node.getLeft());
@@ -24,7 +24,7 @@ public class DancingLinkNodeTest {
      * reinsertHorizontal methods
      */
     @Test
-    public void testHorizontalList() {
+    void testHorizontalList() {
         DancingLinkNode node1 = new DancingLinkNode(null);
         DancingLinkNode node2 = new DancingLinkNode(null);
         DancingLinkNode node3 = new DancingLinkNode(null);
@@ -65,7 +65,7 @@ public class DancingLinkNodeTest {
      * Test: Test correctness of makeRow convenience method
      */
     @Test
-    public void testHorizontalListConstructor() {
+    void testHorizontalListConstructor() {
         DancingLinkNode node1 = new DancingLinkNode(null);
         DancingLinkNode node2 = new DancingLinkNode(null);
         DancingLinkNode node3 = new DancingLinkNode(null);
@@ -86,7 +86,7 @@ public class DancingLinkNodeTest {
      * methods
      */
     @Test
-    public void testVerticalList() {
+    void testVerticalList() {
         DancingLinkNode node1 = new DancingLinkNode(null);
         DancingLinkNode node2 = new DancingLinkNode(null);
         DancingLinkNode node3 = new DancingLinkNode(null);
@@ -124,7 +124,7 @@ public class DancingLinkNodeTest {
     }
 
     @Test
-    public void testHeaderConstructor() {
+    void testHeaderConstructor() {
         DancingLinkHeader header = new DancingLinkHeader();
         DancingLinkNode node1 = header;
         DancingLinkNode node2 = header.newNode();
