@@ -8,7 +8,7 @@ java_library(
 )
 
 java_test(
-    name = "DancingLinkNodeTest",
+    name = "unittest",
     size = "small",
     srcs = glob(["*Test.java"]),
     args = [

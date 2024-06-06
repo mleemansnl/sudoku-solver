@@ -56,8 +56,8 @@ auto char2number(char value) -> int {
 }
 
 auto number2char(int number) -> char {
-  std::string chars("123456789ABCDEFG");
-  return chars.at((number - 1) % BaseSixteen);
+  std::string chars("0123456789ABCDEF");
+  return chars.at(number % BaseSixteen);
 }
 
 /**
@@ -113,7 +113,13 @@ auto parseInput(std::istream& input) -> std::unique_ptr<sudoku::Solver> {
     int column = 1;
     for (char& token : str) {
       if (token != TokenEmptyCell) {
-        solver->setInput(row, column, char2number(token));
+        // Interpret number as int
+        // Sudokus of 16x16 start at 0 instead of 1 (digit range: 0..F)
+        int number = char2number(token);
+        if (size == sudoku::SudokuSize::Sixteen) {
+          number++;
+        }
+        solver->setInput(row, column, number);
       }
       column++;
     }
@@ -135,11 +141,18 @@ auto parseInput(std::istream& input) -> std::unique_ptr<sudoku::Solver> {
  * Helper method to write Sudoku solution to given stream
  */
 void writeSolution(std::ostream& output, std::unique_ptr<sudoku::Solution> solution) {
-  int sudoku_size = static_cast<int>(solution->getSudokuSize());
+  auto sudoku_size = solution->getSudokuSize();
+  int grid_size = static_cast<int>(sudoku_size);
 
-  for (int row = 1; row <= sudoku_size; row++) {
-    for (int column = 1; column <= sudoku_size; column++) {
-      output << solution->getCellValue(row, column) << " ";
+  for (int row = 1; row <= grid_size; row++) {
+    for (int column = 1; column <= grid_size; column++) {
+      // Get number value at given cell
+      int number = solution->getCellValue(row, column);
+      // Sudokus of 16x16 start at 0 instead of 1 (digit range: 0..F)
+      if (sudoku_size == sudoku::SudokuSize::Sixteen) {
+        number--;
+      }
+      output << number2char(number) << " ";
     }
     output << '\n';
   }

@@ -1,7 +1,7 @@
-# Sudoku Solver using Algorithm X & Dancing Links (DLX)
+# Sudoku Solver | Algorithm X and Dancing Links (DLX)
 
-Sudoku Solver is a command-line tool for solving Sudoku puzzles of size 4x4,
-traditional 9x9, and 16x16.
+Sudoku Solver is a command-line tool build with Bazel for solving Sudoku puzzles
+of size 4x4, traditional 9x9, and 16x16.
 
 The code presented here is a reference implementation of Algorithm X and
 Dancing Links (DLX) as originally described by Donald Knuth. For more
@@ -17,6 +17,8 @@ building, testing, and linting in various programming languages.
 
 ## Features
 
+The solvers implemented offer:
+
 - Solves 4x4, traditional 9x9, and 16x16 Sudokus
 - Uses the Dancing Links (DLX) data structure for efficient O(1) remove and
   reinsert operations.
@@ -24,17 +26,29 @@ building, testing, and linting in various programming languages.
   via Dancing Link nodes.
 - Models a Sudoku puzzle as an exact cover problem and solves the puzzle using
   Algorithm X and DLX.
-- Reference implementation in multiple languages, using [Bazel](https://bazel.build/)
-  for building, testing, and linting:
 
-| Language | Directory            | Test Framework | Linters    |
-| -------- | -------------------- | -------------- | ---------- |
-| C++      | [src/cc](src/cc)     | GTest 1.14     | clang-tidy |
-| Java     | [src/java](src/java) | JUnit 5.10     | pmd        |
+Reference implementations are provided in multiple programming languages and
+use [Bazel](https://bazel.build/) for building, testing, and linting:
+
+| Language | Directory            | Test Framework | Linters      |
+| -------- | -------------------- | -------------- | ------------ |
+| C++      | [src/cc](src/cc)     | GTest 1.14     | clang-tidy   |
+| Java     | [src/java](src/java) | JUnit 5.10     | pmd          |
+| Markdown |                      |                | markdownlint |
+
+For more information on how Bazel is used, see [Bazel.md](Bazel.md).
 
 ## Usage
 
-- [ ] Todo: Add instructions on how to solve an example input
+To run the sudoku solver with an example input, use one of the example files and
+choose on of the implementations:
+
+```shell
+cat examples/sudoku-9x9.txt | bazel run //src/cc/main:sudoku
+```
+
+The tool takes an input sudoku from stdin and writes the solution to stdout.
+Note that the bazel run command both compiles and runs the code as needed.
 
 ## Installation
 
