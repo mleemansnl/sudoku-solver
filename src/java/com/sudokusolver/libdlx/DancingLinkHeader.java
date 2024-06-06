@@ -1,8 +1,5 @@
 package com.sudokusolver.libdlx;
 
-import java.util.List;
-import java.util.ArrayList;
-
 /**
  * The DancingLinkHeader represents a special header node in the Dancing Links
  * datastructure.
@@ -45,8 +42,6 @@ public class DancingLinkHeader extends DancingLinkNode {
         DancingLinkNode node = new DancingLinkNode(this);
         node.insertUpOf(this);
         this.incCount();
-
-        nodes.add(node);
         return node;
     }
 
@@ -73,7 +68,4 @@ public class DancingLinkHeader extends DancingLinkNode {
 
     // Counter for the number of nodes in this header's vertical list.
     private int count;
-
-    // Container for owning the memory of the list nodes.
-    private List<DancingLinkNode> nodes = new ArrayList<>();
 }

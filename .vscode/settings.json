@@ -67,5 +67,8 @@
     "java.project.referencedLibraries": [
         "bazel-bin/external/rules_jvm_external~~maven~maven/**/*.jar"
     ],
-    "java.format.settings.url": ".vscode/java-formatter.xml"
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+    },
 }

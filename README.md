@@ -12,6 +12,9 @@ references:
 - [Wikipedia > Dancing Links](https://en.wikipedia.org/wiki/Dancing_Links)
 - [Arxiv > Knuth's original paper on Dancing Links](https://arxiv.org/abs/cs/0011047)
 
+In addition, this repository showcases how to use [Bazel](https://bazel.build/) for
+building, testing, and linting in various programming languages.
+
 ## Features
 
 - Solves 4x4, traditional 9x9, and 16x16 Sudokus
@@ -21,7 +24,13 @@ references:
   via Dancing Link nodes.
 - Models a Sudoku puzzle as an exact cover problem and solves the puzzle using
   Algorithm X and DLX.
-- Reference implementation in C++
+- Reference implementation in multiple languages, using [Bazel](https://bazel.build/)
+  for building, testing, and linting:
+
+| Language | Directory            | Test Framework | Linters    |
+| -------- | -------------------- | -------------- | ---------- |
+| C++      | [src/cc](src/cc)     | GTest 1.14     | clang-tidy |
+| Java     | [src/java](src/java) | JUnit 5.10     | pmd        |
 
 ## Usage
 
