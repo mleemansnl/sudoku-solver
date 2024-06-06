@@ -72,13 +72,13 @@ public class Solver {
      * Before finding a solution, one can setup a partial solution to use as a
      * starting point.
      */
-    public void coverRow(DancingLinkNode row_root) {
+    public void coverRow(DancingLinkNode rowRoot) {
         // Add placement to solution
-        this.solution.add(row_root);
+        this.solution.add(rowRoot);
 
         // Cover every column in this row
-        Solver.cover(row_root.getHeader());
-        for (DancingLinkNode node = row_root.getRight(); node != row_root; node = node.getRight()) {
+        Solver.cover(rowRoot.getHeader());
+        for (DancingLinkNode node = rowRoot.getRight(); node != rowRoot; node = node.getRight()) {
             Solver.cover(node.getHeader());
         }
     }
@@ -111,22 +111,22 @@ public class Solver {
 
         // no solution found, so we continue our search
         // optimization: find column with lowest count
-        Optional<DancingLinkHeader> opt_header = this.selectHeaderColumn();
+        Optional<DancingLinkHeader> optHeader = this.selectHeaderColumn();
 
         // check if this is a good solution
-        if (opt_header.isEmpty()) {
+        if (optHeader.isEmpty()) {
             return false;
         }
 
-        DancingLinkHeader target_header = opt_header.get();
+        DancingLinkHeader targetHeader = optHeader.get();
 
         // cover this header column
-        Solver.cover(target_header);
+        Solver.cover(targetHeader);
 
         // try every placement part of this column
         // add it to the solution, recurse solve the smaller matrix,
         // and backtrack if no good solution was found
-        for (DancingLinkNode row = target_header.getDown(); row != target_header; row = row.getDown()) {
+        for (DancingLinkNode row = targetHeader.getDown(); row != targetHeader; row = row.getDown()) {
             // try solution with current row
             this.solution.add(row);
 
@@ -150,7 +150,7 @@ public class Solver {
         }
 
         // uncover column
-        Solver.uncover(target_header);
+        Solver.uncover(targetHeader);
 
         return false;
     }
@@ -163,7 +163,7 @@ public class Solver {
         DancingLinkHeader root = this.matrix.getRoot();
 
         // find column with lowest count
-        DancingLinkHeader target_header = null;
+        DancingLinkHeader targetHeader = null;
         int minCount = Integer.MAX_VALUE;
 
         for (DancingLinkHeader header = root.getRight().getHeader(); header != root; header = header.getRight()
@@ -172,12 +172,12 @@ public class Solver {
             // than the currently found targetHeader
             if (header.getCount() < minCount) {
                 minCount = header.getCount();
-                target_header = header;
+                targetHeader = header;
             }
         }
 
-        if (target_header != null) {
-            return Optional.of(target_header);
+        if (targetHeader != null) {
+            return Optional.of(targetHeader);
         }
 
         return Optional.empty();

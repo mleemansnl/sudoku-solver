@@ -257,10 +257,12 @@ public class DancingLinkNode {
     private DancingLinkHeader header;
 
     // References to the four neighbors in the two-dimensional doubly linked list.
-    private DancingLinkNode up, down, left, right;
+    private DancingLinkNode up;
+    private DancingLinkNode down;
+    private DancingLinkNode left;
+    private DancingLinkNode right;
 
     // Data assocaited with this node.
     // This data element can be used as meta-data for bookkeeping.
-    Object data;
-
+    private Object data;
 }

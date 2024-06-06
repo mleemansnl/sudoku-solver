@@ -12,3 +12,6 @@ markdown_library(
     name = "md",
     srcs = glob(["**/*.md"]),
 )
+
+# Export PMD settings for Java linting
+exports_files(["pmd.xml"])

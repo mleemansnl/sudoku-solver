@@ -15,21 +15,29 @@ module(
     version = "1.0",
 )
 
+# Dependencies, generic
+
+# Supports linting for: Java
+bazel_dep(name = "aspect_rules_lint", version = "1.0.0-rc3")
+
 # Dependencies for C++ code
 
 # GTest C++ unit test framework
 bazel_dep(name = "googletest", version = "1.14.0")
 
 # Dependencies for Java code
+
 # Note: After changing maven artifacts, regenerate maven_install.json using:
 #   $ REPIN=1 bazel run @maven//:pin
 bazel_dep(name = "rules_jvm_external", version = "6.1")
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
     artifacts = [
-        #"junit:junit:4.13.2",
+        # JUnit5
         "org.junit.jupiter:junit-jupiter:5.10.2",
         "org.junit.platform:junit-platform-console:1.10.2",
+        # PMD linter
+        "net.sourceforge.pmd:pmd:7.2.0",
     ],
     lock_file = "//:maven_install.json",
 )
