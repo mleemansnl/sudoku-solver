@@ -58,8 +58,10 @@ RUN curl -fsSLO --compressed "https://nodejs.org/dist/v20.14.0/node-v20.14.0-lin
 ###
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install openjdk-17-jre ant maven \
+    && apt-get -y install openjdk-17-jdk ant maven \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+
+ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64/
 
 ###
 # Install Bazelisk for Bazel

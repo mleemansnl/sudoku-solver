@@ -10,10 +10,14 @@
 
 namespace app {
 
-const std::string InvalidInput = "Input is invalid";
-const std::string NoSolution = "No valid Sudoku solution found";
+/**
+ * In the input, an empty cell is represented by an undescore '_'
+ */
 const char TokenEmptyCell = '_';
 
+/**
+ * Base Sixteen
+ */
 const int BaseSixteen = 16;
 
 /**
@@ -37,7 +41,7 @@ auto processSudoku(std::istream& input, std::ostream& output) -> bool {
 
     // Check if a solution was found
     if (!result.has_value()) {
-      output << NoSolution << '\n';
+      output << "No valid Sudoku solution found" << '\n';
       return false;
     }
 
@@ -50,14 +54,26 @@ auto processSudoku(std::istream& input, std::ostream& output) -> bool {
   return false;
 }
 
-auto char2number(char value) -> int {
+auto char2number(char value, sudoku::SudokuSize sudoku_size) -> int {
   std::string str{value};
-  return static_cast<int>(strtol(str.c_str(), nullptr, BaseSixteen));
+  int number = static_cast<int>(strtol(str.c_str(), nullptr, BaseSixteen));
+
+  // Sudokus of 16x16 start at 0 instead of 1 (digit range: 0..F)
+  if (sudoku_size == sudoku::SudokuSize::Sixteen) {
+    number++;
+  }
+
+  return number;
 }
 
-auto number2char(int number) -> char {
-  std::string chars("123456789ABCDEFG");
-  return chars.at((number - 1) % BaseSixteen);
+auto number2char(int number, sudoku::SudokuSize sudoku_size) -> char {
+  // Sudokus of 16x16 start at 0 instead of 1 (digit range: 0..F)
+  if (sudoku_size == sudoku::SudokuSize::Sixteen) {
+    number--;
+  }
+
+  std::string chars("0123456789ABCDEF");
+  return chars.at(number % BaseSixteen);
 }
 
 /**
@@ -76,7 +92,7 @@ auto parseInput(std::istream& input) -> std::unique_ptr<sudoku::Solver> {
   str.erase(std::remove_if(str.begin(), str.end(), isspace), str.end());
   std::size_t input_length = str.length();
 
-  // determine sudoku size
+  // determine sudoku size based on the length of the first input line
   switch (input_length) {
     case static_cast<std::size_t>(sudoku::SudokuSize::Four):
       size = sudoku::SudokuSize::Four;
@@ -113,7 +129,9 @@ auto parseInput(std::istream& input) -> std::unique_ptr<sudoku::Solver> {
     int column = 1;
     for (char& token : str) {
       if (token != TokenEmptyCell) {
-        solver->setInput(row, column, char2number(token));
+        // Interpret number as int
+        int number = char2number(token, size);
+        solver->setInput(row, column, number);
       }
       column++;
     }
@@ -135,11 +153,14 @@ auto parseInput(std::istream& input) -> std::unique_ptr<sudoku::Solver> {
  * Helper method to write Sudoku solution to given stream
  */
 void writeSolution(std::ostream& output, std::unique_ptr<sudoku::Solution> solution) {
-  int sudoku_size = static_cast<int>(solution->getSudokuSize());
+  auto sudoku_size = solution->getSudokuSize();
+  int grid_size = static_cast<int>(sudoku_size);
 
-  for (int row = 1; row <= sudoku_size; row++) {
-    for (int column = 1; column <= sudoku_size; column++) {
-      output << solution->getCellValue(row, column) << " ";
+  for (int row = 1; row <= grid_size; row++) {
+    for (int column = 1; column <= grid_size; column++) {
+      // Get number value at given cell and print with the appropiate character
+      int number = solution->getCellValue(row, column);
+      output << number2char(number, sudoku_size) << " ";
     }
     output << '\n';
   }
