@@ -41,19 +41,19 @@ public class SudokuMatrix extends DancingLinksMatrix {
          * each column every number between 1..digit_range is filled in 4. the fourth
          * digit_range^2 columns represent for each box every number between
          * 1..digit_range is filled in Therefore, the total number of conditions to
-         * model equals: NumConditions = num_digits * num_digits * TypesOfConditions = 9
+         * model equals: numConditions = num_digits * num_digits * TypesOfConditions = 9
          * * 9 * 4 = 324 for a typical sudoku of size num_digits=9
          *
          */
-        final int NumConditions = numDigits * numDigits * TypesOfConditions;
+        final int numConditions = numDigits * numDigits * TypesOfConditions;
 
         // We will use this helper data-structure to quickly lookup column headers by
         // index
         // This is used while filling the matrix with nodes matching the correct column
-        List<DancingLinkHeader> columnByIndex = new ArrayList<>(NumConditions);
+        List<DancingLinkHeader> columnByIndex = new ArrayList<>(numConditions);
 
         // Create every column header
-        for (int i = 0; i < NumConditions; i++) {
+        for (int i = 0; i < numConditions; i++) {
             columnByIndex.add(i, this.newHeader());
         }
 
@@ -62,13 +62,13 @@ public class SudokuMatrix extends DancingLinksMatrix {
         // The total number of nodes to model equals:
         // numNodes = digits * digits * digits
         // = 9 * 9 * 9 = 729 for a typical sudoku of size digits=9
-        final int NumNodes = numDigits * numDigits * numDigits;
+        final int numNodes = numDigits * numDigits * numDigits;
 
         // We use this helper data-structure to quickly lookup root/starting placement
         // nodes by index
         // This will be used to lookup a row of nodes for a given (row, column, number)
         // triplet.
-        this.index2node = new ArrayList<>(NumNodes);
+        this.index2node = new ArrayList<>(numNodes);
 
         // Create every node and add to the vertical list of the right column headers
         for (int row = 1; row <= numDigits; row++) {

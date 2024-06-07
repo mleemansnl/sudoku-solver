@@ -16,7 +16,14 @@ package com.sudokusolver.libsudoku;
  *
  * The offset in the below helper methods are based on the above groupings.
  ******/
-public class SudokuMath {
+public final class SudokuMath {
+
+    /**
+     * This is an utility class, so disable instantiation with a private
+     * constructor.
+     */
+    private SudokuMath() {
+    }
 
     /**
      * Helper method to calculate the header node index for the Sudoku cell
@@ -64,7 +71,7 @@ public class SudokuMath {
         int offset = 3 * digitRange.getDigitRange() * digitRange.getDigitRange();
 
         int sqrt = (int) Math.floor(Math.sqrt((double) digitRange.getDigitRange()));
-        int box = ((column - 1) / sqrt) + ((row - 1) / sqrt) * sqrt;
+        int box = (column - 1) / sqrt + (row - 1) / sqrt * sqrt;
 
         return offset + box * digitRange.getDigitRange() + (number - 1);
     }
@@ -75,8 +82,8 @@ public class SudokuMath {
      * triplet.
      */
     public static int indexForNode(SudokuSize digitRange, int row, int column, int number) {
-        return ((row - 1) * digitRange.getDigitRange() * digitRange.getDigitRange())
-                + ((column - 1) * digitRange.getDigitRange()) + (number - 1);
+        return (row - 1) * digitRange.getDigitRange() * digitRange.getDigitRange()
+                + (column - 1) * digitRange.getDigitRange() + (number - 1);
     }
 
 }

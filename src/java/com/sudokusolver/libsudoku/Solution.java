@@ -1,6 +1,7 @@
 package com.sudokusolver.libsudoku;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,11 +21,8 @@ public class Solution {
         this.digitRange = digitRange;
         int gridSize = digitRange.getDigitRange() * digitRange.getDigitRange();
 
-        // populate grid with zeroes
-        this.grid = new ArrayList<>(gridSize);
-        for (int i = 0; i < gridSize; i++) {
-            this.grid.add(0);
-        }
+        // create new grid and populate with zeroes
+        this.grid = new ArrayList<>(Collections.nCopies(gridSize,0));
 
         // override with actual placement values
         for (Placement placement : rawSolution) {
