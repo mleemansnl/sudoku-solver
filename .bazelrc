@@ -1,1 +1,8 @@
+
+# Set C++ language version
+
 build --cxxopt=-std=c++20
+
+# Set Java language version
+
+build --java_language_version=17
