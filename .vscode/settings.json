@@ -61,9 +61,7 @@
         "thread": "cpp",
         "variant": "cpp"
     },
-    "java.project.sourcePaths": [
-        "src/java"
-    ],
+    "java.jdt.ls.java.home": "/usr/lib/jvm/java-17-openjdk-amd64/",
     "java.project.referencedLibraries": [
         "bazel-bin/external/rules_jvm_external~~maven~maven/**/*.jar"
     ],
