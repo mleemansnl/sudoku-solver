@@ -1,0 +1,72 @@
+name: Test
+
+on:
+    pull_request:
+    push:
+        branches:
+            - main
+
+#permissions:
+#    contents: read
+
+env:
+    DEVCONTAINER: ghcr.io/mleemansnl/sudoku-solver-devcontainer
+
+jobs:
+    setup:
+        name: Setup CI build and test environment
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        steps:
+            - name: Checkout (GitHub)
+              uses: actions/checkout@v3.2.0
+
+            - name: Login to GitHub Container Registry
+              uses: docker/login-action@v2 
+              with:
+                registry: ghcr.io
+                username: ${{ github.repository_owner }}
+                password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Pre-build dev container image
+              uses: devcontainers/ci@v0.3
+              with:
+                imageName: ${{ env.DEVCONTAINER }}
+                cacheFrom: ${{ env.DEVCONTAINER }}
+                push: always
+
+    build:
+        name: Build code
+        needs: setup
+        runs-on: ubuntu-latest
+        timeout-minutes: 5
+        steps:
+            - name: Build all code
+              uses: devcontainers/ci@v0.3
+              with:
+                imageName: ${{ env.DEVCONTAINER }}
+                runCmd: bazel build //...
+
+    test:
+        name: Run unit tests
+        needs: build
+        runs-on: ubuntu-latest
+        timeout-minutes: 5
+        steps:
+            - name: Run all tests
+              uses: devcontainers/ci@v0.3
+              with:
+                imageName: ${{ env.DEVCONTAINER }}
+                runCmd: ./test.sh
+
+    lint:
+        name: Run static linters
+        needs: setup
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            - name: Run all linters
+              uses: devcontainers/ci@v0.3
+              with:
+                imageName: ${{ env.DEVCONTAINER }}
+                runCmd: ./lint.sh
