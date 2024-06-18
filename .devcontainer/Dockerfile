@@ -84,3 +84,6 @@ RUN go install github.com/bazelbuild/buildtools/buildifier@latest
 
 # Install Markdown linter
 RUN npm install -g markdownlint-cli
+
+# Install GitHub Actions workflow linter
+RUN go install github.com/rhysd/actionlint/cmd/actionlint@latest

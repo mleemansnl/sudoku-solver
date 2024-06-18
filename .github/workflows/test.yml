@@ -15,7 +15,7 @@ env:
 
 jobs:
     setup:
-        name: Setup CI build and test environment
+        name: Pre-build dev container image
         runs-on: ubuntu-latest
         timeout-minutes: 15
         steps:
