@@ -6,8 +6,9 @@ on:
         branches:
             - main
 
-#permissions:
-#    contents: read
+permissions:
+   contents: read
+   packages: write
 
 env:
     DEVCONTAINER: ghcr.io/mleemansnl/sudoku-solver-devcontainer
