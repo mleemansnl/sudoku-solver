@@ -69,4 +69,17 @@
     "[markdown]": {
         "editor.defaultFormatter": "yzhang.markdown-all-in-one",
     },
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": [
+            "*.github/workflows/*.yaml",
+            "*.github/workflows/*.yml",
+        ],
+        "https://json.schemastore.org/github-action.json": [
+            "action.yaml",
+            "action.yml",
+        ]
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
 }

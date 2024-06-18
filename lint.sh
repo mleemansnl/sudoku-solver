@@ -22,3 +22,6 @@ bazel build //src/java/... \
 bazel build //:md \
   --aspects @dwtj_rules_markdown//markdown:aspects.bzl%markdownlint_aspect \
    || cat bazel-bin/md.markdownlint.log
+
+# Lint GitHub Actions Workflows using actionlint
+actionlint

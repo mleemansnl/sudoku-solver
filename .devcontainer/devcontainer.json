@@ -14,7 +14,9 @@
                 "BazelBuild.vscode-bazel",
                 "DavidAnson.vscode-markdownlint",
                 "vscjava.vscode-java-pack",
-                "yzhang.markdown-all-in-one"
+                "yzhang.markdown-all-in-one",
+                "GitHub.vscode-github-actions",
+                "redhat.vscode-yaml"
             ]
         }
     }
