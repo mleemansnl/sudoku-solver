@@ -185,7 +185,7 @@ class DancingLinkNode {
   // list.
   DancingLinkNode *up, *down, *left, *right;
 
-  // Data assocaited with this node.
+  // Data associated with this node.
   // This data element can be used as meta-data for bookkeeping.
   std::any data;
 };

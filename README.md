@@ -99,6 +99,23 @@ For the dev container environment, run all linters via this script:
 ./lint.sh
 ```
 
+### Updating Build files with Gazelle
+
+For the golang implementation, Gazelle is used for Bazel BUILD file generation.
+Upon changing golang code, run the following command:
+
+```shell
+bazel run //:gazelle
+```
+
+External golang dependencies are managed by Gazelle via go mod and are
+listed explicitly in MODULE.bazel.
+Upon adding or upgreding a new external golang dependency, run:
+
+```shell
+bazel run @rules_go//go -- mod tidy
+```
+
 ## License
 
 This project is licensed under the terms of GNU GPLv3.
