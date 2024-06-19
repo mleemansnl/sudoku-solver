@@ -72,7 +72,7 @@ class DancingLinkNode {
    * If the other node is the root of a list, then this node
    * will end up effectively at the end of that list.
    *
-   * \param other the node to which insert this left of.
+   * \param other the node to which insert this up of.
    * \post other.up == this && this.down == other
    */
   void insertUpOf(DancingLinkNode *other);
