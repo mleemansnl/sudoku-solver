@@ -5,7 +5,7 @@
 - com.sudokusolver.libdlx defines the Dancing Links (DLX) data structure and
   Algorithm X solver for generic exact cover problem.
 - com.sudokusolver.libsudoku defines a Sudoku solver that models models a Sudoku
-- puzzle as an exact cover problem and solves the puzzle using libdlx.
+  puzzle as an exact cover problem and solves the puzzle using libdlx.
 - com.sudokusolver.main defines the cli binary reading in a partial sudoku via
   System.in and outputting the solution on System.out.
 

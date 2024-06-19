@@ -30,11 +30,12 @@ The solvers implemented offer:
 Reference implementations are provided in multiple programming languages and
 use [Bazel](https://bazel.build/) for building, testing, and linting:
 
-| Language | Directory            | Test Framework | Linters      |
-| -------- | -------------------- | -------------- | ------------ |
-| C++      | [src/cc](src/cc)     | GTest 1.14     | clang-tidy   |
-| Java     | [src/java](src/java) | JUnit 5.10     | pmd          |
-| Markdown |                      |                | markdownlint |
+| Language   | Directory            | Test Framework | Linters      |
+| ---------- | -------------------- | -------------- | ------------ |
+| C++ 20     | [src/cc](src/cc)     | GTest 1.14     | clang-tidy   |
+| Java 17    | [src/java](src/java) | JUnit 5.10     | pmd          |
+| Markdown   |                      |                | markdownlint |
+| GH Actions |                      |                | actionlint   |
 
 For more information on how Bazel is used, see [Bazel.md](Bazel.md).
 
