@@ -20,7 +20,7 @@ package libdlx
  * the matrix can own the memory for its header nodes.
  */
 type DancingLinkHeader interface {
-	// A DancingLinkHeader is also a DancingLinkNode
+	// A DancingLinkHeader also embeds a DancingLinkNode
 	DancingLinkNode
 
 	/**
@@ -53,10 +53,12 @@ type DancingLinkHeader interface {
 }
 
 func NewDancingLinkHeader() DancingLinkHeader {
-	header := &dancingLinkHeader{
-		dancingLinkNode: newDancingLinkNode(),
-	}
-	header.dancingLinkNode.header = header
+	header := &dancingLinkHeader{}
+	header.header = header
+	header.up = header
+	header.down = header
+	header.left = header
+	header.right = header
 	return header
 }
 
@@ -64,8 +66,8 @@ func NewDancingLinkHeader() DancingLinkHeader {
  * Implementation for the DancingLinkHeader interface
  */
 type dancingLinkHeader struct {
-	// A dancingLinkHeader extends dancingLinkNode
-	*dancingLinkNode
+	// A dancingLinkHeader also embeds a dancingLinkNode
+	dancingLinkNode
 
 	// Counter for the number of nodes in this header's vertical list.
 	count int

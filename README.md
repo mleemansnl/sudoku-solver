@@ -34,6 +34,7 @@ use [Bazel](https://bazel.build/) for building, testing, and linting:
 | -------- | -------------------- | -------------- | ------------ |
 | C++      | [src/cc](src/cc)     | GTest 1.14     | clang-tidy   |
 | Java     | [src/java](src/java) | JUnit 5.10     | pmd          |
+| Golang   | [src/go](src/go)     | Testify 1.9.0  | nogo         |
 | Markdown |                      |                | markdownlint |
 
 For more information on how Bazel is used, see [Bazel.md](Bazel.md).

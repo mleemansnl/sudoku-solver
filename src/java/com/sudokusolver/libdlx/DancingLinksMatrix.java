@@ -18,7 +18,6 @@ package com.sudokusolver.libdlx;
  * This matrix directly owns all header nodes in the header row. A new header
  * node is created and added to the header row via \link
  * DancingLinksMatrix::newHeader() .
- *
  */
 public class DancingLinksMatrix {
     /**

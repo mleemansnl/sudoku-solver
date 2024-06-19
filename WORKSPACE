@@ -31,6 +31,12 @@ fetch_pmd()
 # )
 
 ###
+# Dependencies for Golang code
+###
+
+
+
+###
 # Dependencies for Markdown files
 ###
 

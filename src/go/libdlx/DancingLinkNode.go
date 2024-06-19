@@ -138,6 +138,26 @@ type DancingLinkNode interface {
 	 * used as meta-data for bookkeeping when modelling exact cover problems.
 	 */
 	GetData() interface{}
+
+	/**
+	 * Sets the left neighbor of this node in the horizontal doubly linked list.
+	 */
+	setLeft(DancingLinkNode)
+
+	/**
+	 * Sets the right neighbor of this node in the horizontal doubly linked list.
+	 */
+	setRight(DancingLinkNode)
+
+	/**
+	 * Sets the up neighbor of this node in the vertical doubly linked list.
+	 */
+	setUp(DancingLinkNode)
+
+	/**
+	 * Sets the down neighbor of this node in the vertical doubly linked list.
+	 */
+	setDown(DancingLinkNode)
 }
 
 /**
@@ -151,6 +171,19 @@ func NewDancingLinkNode(header DancingLinkHeader) DancingLinkNode {
 	node := newDancingLinkNode()
 	node.header = header
 	return node
+}
+
+/**
+ * Helper method for combinig multiple nodes into a horizontally linked list.
+ *
+ * This convinience method will insert each node into the linked list starting
+ * at root. The left/right references are updated to reflect the order of nodes
+ * provided to this methd.
+ */
+func MakeRow(root DancingLinkNode, nodes ...DancingLinkNode) {
+	for _, node := range nodes {
+		node.InsertLeftOf(root)
+	}
 }
 
 /**
@@ -173,46 +206,44 @@ type dancingLinkNode struct {
 	header DancingLinkHeader
 
 	// References to the four neighbors in the two-dimensional doubly linked list.
-	up    *dancingLinkNode
-	down  *dancingLinkNode
-	left  *dancingLinkNode
-	right *dancingLinkNode
+	up    DancingLinkNode
+	down  DancingLinkNode
+	left  DancingLinkNode
+	right DancingLinkNode
 
 	// Data associated with this node.
 	// This data element can be used as meta-data for bookkeeping.
 	data interface{}
 }
 
-func (n *dancingLinkNode) InsertLeftOf(o DancingLinkNode) {
+func (n *dancingLinkNode) InsertLeftOf(other DancingLinkNode) {
 	// Before:
 	// ... <-> [other-left] <-> [other] <-> ...
 	// After:
 	// ... <-> [other-left] <-> [this] <-> [other] <-> ...
-	other, _ := o.(*dancingLinkNode)
 
 	// Make left neighbor of other point to this, and vice versa
-	other.left.right = n
-	n.left = other.left
+	other.GetLeft().setRight(n)
+	n.setLeft(other.GetLeft())
 
 	// Make other point to this, and vice versa
-	other.left = n
-	n.right = other
+	other.setLeft(n)
+	n.setRight(other)
 }
 
-func (n *dancingLinkNode) InsertUpOf(o DancingLinkNode) {
+func (n *dancingLinkNode) InsertUpOf(other DancingLinkNode) {
 	// Before:
 	// ... <-> [other-up] <-> [other] <-> ...
 	// After:
 	// ... <-> [other-up] <-> [this] <-> [other] <-> ...
-	other, _ := o.(*dancingLinkNode)
 
 	// Make up neighbor of other point to this, and vice versa
-	other.up.down = n
-	n.up = other.up
+	other.GetUp().setDown(n)
+	n.setUp(other.GetUp())
 
 	// Make other point to this, and vice versa
-	other.up = n
-	n.down = other
+	other.setUp(n)
+	n.setDown(other)
 }
 
 func (n *dancingLinkNode) RemoveHorizontal() {
@@ -222,8 +253,8 @@ func (n *dancingLinkNode) RemoveHorizontal() {
 	// ... <-> [left] <-> [right] <-> ...
 	// With the references in this still intact:
 	// [left] <- [this] -> [right]
-	n.right.left = n.left
-	n.left.right = n.right
+	n.GetRight().setLeft(n.GetLeft())
+	n.GetLeft().setRight(n.GetRight())
 }
 
 func (n *dancingLinkNode) RemoveVertical() {
@@ -233,8 +264,8 @@ func (n *dancingLinkNode) RemoveVertical() {
 	// ... <-> [up] <-> [down] <-> ...
 	// With the references in this still intact:
 	// [up] <- [this] -> [down]
-	n.up.down = n.down
-	n.down.up = n.up
+	n.GetUp().setDown(n.GetDown())
+	n.GetDown().setUp(n.GetUp())
 }
 
 func (n *dancingLinkNode) ReinsertHorizontal() {
@@ -242,8 +273,8 @@ func (n *dancingLinkNode) ReinsertHorizontal() {
 	// ... <-> [left] <-> [right] <-> ...
 	// After:
 	// ... <-> [left] <-> [this] <-> [right] <-> ...
-	n.left.right = n
-	n.right.left = n
+	n.GetLeft().setRight(n)
+	n.GetRight().setLeft(n)
 }
 
 func (n *dancingLinkNode) ReinsertVertical() {
@@ -251,8 +282,8 @@ func (n *dancingLinkNode) ReinsertVertical() {
 	// ... <-> [up] <-> [down] <-> ...
 	// After:
 	// ... <-> [up] <-> [this] <-> [down] <-> ...
-	n.up.down = n
-	n.down.up = n
+	n.GetUp().setDown(n)
+	n.GetDown().setUp(n)
 }
 
 func (n *dancingLinkNode) GetHeader() DancingLinkHeader {
@@ -281,4 +312,32 @@ func (n *dancingLinkNode) SetData(data interface{}) {
 
 func (n *dancingLinkNode) GetData() interface{} {
 	return n.data
+}
+
+/**
+ * Sets the left neighbor of this node in the horizontal doubly linked list.
+ */
+func (n *dancingLinkNode) setLeft(o DancingLinkNode) {
+	n.left = o
+}
+
+/**
+ * Sets the right neighbor of this node in the horizontal doubly linked list.
+ */
+func (n *dancingLinkNode) setRight(o DancingLinkNode) {
+	n.right = o
+}
+
+/**
+ * Sets the up neighbor of this node in the vertical doubly linked list.
+ */
+func (n *dancingLinkNode) setUp(o DancingLinkNode) {
+	n.up = o
+}
+
+/**
+ * Sets the down neighbor of this node in the vertical doubly linked list.
+ */
+func (n *dancingLinkNode) setDown(o DancingLinkNode) {
+	n.down = o
 }
