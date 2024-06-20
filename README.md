@@ -46,7 +46,14 @@ To run the sudoku solver with an example input, use one of the example files and
 choose on of the implementations:
 
 ```shell
+ # C++ implementation
 cat examples/sudoku-9x9.txt | bazel run //src/cc/main:sudoku
+
+# Java implementation
+cat examples/sudoku-9x9.txt | bazel run //src/java/com/sudokusolver/main:Main
+
+# Golang implementation
+cat examples/sudoku-9x9.txt | bazel run //src/go/main
 ```
 
 The tool takes an input sudoku from stdin and writes the solution to stdout.

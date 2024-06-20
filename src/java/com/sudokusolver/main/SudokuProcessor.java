@@ -122,7 +122,6 @@ public final class SudokuProcessor {
 
                 // Check if this line is complete
                 if (curLength != inputLength) {
-
                     throw new Exception("Error: All lines should be of equal size. Read: %d. expected: %d"
                             .formatted(curLength, inputLength));
                 }
@@ -142,7 +141,7 @@ public final class SudokuProcessor {
                 if (row < inputLength) {
                     if (!input.hasNextLine()) {
                         throw new Exception(
-                                "Error: Read  %d lines. Expected to read %d lines instead".formatted(row, inputLength));
+                                "Error: Read %d lines. Expected to read %d lines instead".formatted(row, inputLength));
                     }
                     line = input.nextLine();
                 }

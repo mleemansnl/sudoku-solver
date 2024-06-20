@@ -17,6 +17,7 @@ go_library(
 
 go_test(
     name = "libsudoku_test",
+    size = "small",
     srcs = ["SudokuSolver_test.go"],
     deps = [
         ":libsudoku",
