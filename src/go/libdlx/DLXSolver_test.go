@@ -60,5 +60,4 @@ func (suite *DLXSolverTestSuite) TestBasic() {
 		suite.Equal(node_o1, solution[1])
 		suite.Equal(node_e4, solution[0])
 	}
-
 }

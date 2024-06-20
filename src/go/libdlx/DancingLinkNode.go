@@ -21,7 +21,6 @@ package libdlx
  * used as meta-data for bookkeeping when modelling exact cover problems.
  */
 type DancingLinkNode interface {
-
 	/**
 	 * Inserts this node to the left of the given other node.
 	 *

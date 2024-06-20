@@ -89,10 +89,11 @@ public class SudokuMatrix extends DancingLinksMatrix {
 
                     // Add Placement meta data so that after finding a solution,
                     // we can reinterpret the DancingLinkNodes as values in a Sudoku grid
-                    nodeCell.setData(new Placement(row, column, number));
-                    nodeRow.setData(new Placement(row, column, number));
-                    nodeColumn.setData(new Placement(row, column, number));
-                    nodeBox.setData(new Placement(row, column, number));
+                    Placement data = new Placement(row, column, number);
+                    nodeCell.setData(data);
+                    nodeRow.setData(data);
+                    nodeColumn.setData(data);
+                    nodeBox.setData(data);
 
                     this.index2node.add(SudokuMath.indexForNode(size, row, column, number), nodeCell);
                 }

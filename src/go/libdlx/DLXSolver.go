@@ -37,7 +37,6 @@ import "math"
  * operations in \link DancingLinkNode.
  */
 type DLXSolver interface {
-
 	/**
 	 * Solve for the provided matrix using an Alogrithm X implementation.
 	 *
@@ -211,7 +210,6 @@ func (s *dlxSolver) selectHeaderColumn() (DancingLinkHeader, bool) {
  * O(1) remove operations in \link DancingLinkNode.
  */
 func dlxCover(header DancingLinkHeader) {
-
 	// remove column header from the matrix
 	// indicating this condition is satisfied
 	header.RemoveHorizontal()
@@ -233,7 +231,6 @@ func dlxCover(header DancingLinkHeader) {
  * DancingLinkNode.
  */
 func dlxUncover(header DancingLinkHeader) {
-
 	// put back all rows in the column into other columns they were in
 	for row := header.GetUp(); row != header; row = row.GetUp() {
 		for node := row.GetLeft(); node != row; node = node.GetLeft() {

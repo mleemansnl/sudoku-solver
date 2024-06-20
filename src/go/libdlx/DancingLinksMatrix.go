@@ -20,7 +20,6 @@ package libdlx
  * DancingLinksMatrix::newHeader() .
  */
 type DancingLinksMatrix interface {
-
 	/**
 	 * Instantiates a new DancingLinkHeader and inserts it into the header row
 	 * horizontal list.

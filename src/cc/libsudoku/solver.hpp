@@ -8,7 +8,7 @@
 namespace sudoku {
 
 /**
- * This Solver tales an input SudokuMatrix and solves to find a valid Sudoku Solution.
+ * This Solver takes an input SudokuMatrix and solves to find a valid Sudoku Solution.
  *
  * This Solver wraps dlx::Solver and provides Sudoku-specific convenciences:
  *  - The setInput() method allows to update the SudokuMatrix such that

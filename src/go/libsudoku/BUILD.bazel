@@ -1,0 +1,25 @@
+load("@rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "libsudoku",
+    srcs = [
+        "Placement.go",
+        "Solution.go",
+        "SudokuMath.go",
+        "SudokuMatrix.go",
+        "SudokuSize.go",
+        "SudokuSolver.go",
+    ],
+    importpath = "github.com/mleemansnl/sudoku-solver/src/go/libsudoku",
+    visibility = ["//visibility:public"],
+    deps = ["//src/go/libdlx"],
+)
+
+go_test(
+    name = "libsudoku_test",
+    srcs = ["SudokuSolver_test.go"],
+    deps = [
+        ":libsudoku",
+        "@com_github_stretchr_testify//suite",
+    ],
+)

@@ -94,7 +94,6 @@ func (suite *DancingLinkNodeTestSuite) TestHorizontalListConstructor() {
  * methods
  */
 func (suite *DancingLinkNodeTestSuite) TestVerticalList() {
-
 	node1 := libdlx.NewDancingLinkNode(nil)
 	node2 := libdlx.NewDancingLinkNode(nil)
 	node3 := libdlx.NewDancingLinkNode(nil)

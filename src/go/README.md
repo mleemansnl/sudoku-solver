@@ -15,7 +15,7 @@
 To run the sudoku solver with an example input, use:
 
 ```shell
-cat examples/sudoku-4x4.txt | bazel run //src/java/com/sudokusolver/main:Main
-cat examples/sudoku-9x9.txt | bazel run //src/java/com/sudokusolver/main:Main
-cat examples/sudoku-16x16.txt | bazel run //src/java/com/sudokusolver/main:Main
+cat examples/sudoku-4x4.txt | bazel run //src/go/main:Main
+cat examples/sudoku-9x9.txt | bazel run //src/go/main:Main
+cat examples/sudoku-16x16.txt | bazel run //src/go/main:Main
 ```
