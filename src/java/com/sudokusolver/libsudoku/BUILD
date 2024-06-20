@@ -4,10 +4,10 @@ java_library(
         ["*.java"],
         exclude = ["*Test.java"],
     ),
-    deps = [
-        "//src/java/com/sudokusolver/libdlx"
-    ],
     visibility = ["//visibility:public"],
+    deps = [
+        "//src/java/com/sudokusolver/libdlx",
+    ],
 )
 
 java_test(

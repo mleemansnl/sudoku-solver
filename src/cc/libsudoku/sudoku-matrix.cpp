@@ -79,10 +79,11 @@ SudokuMatrix::SudokuMatrix(SudokuSize sudoku_size)
 
         // Add Placement meta data so that after finding a solution,
         // we can reinterpret the DancingLinkNodes as values in a Sudoku grid
-        nodeCell->setData(Placement{row, column, number});
-        nodeRow->setData(Placement{row, column, number});
-        nodeColumn->setData(Placement{row, column, number});
-        nodeBox->setData(Placement{row, column, number});
+        Placement data(row, column, number);
+        nodeCell->setData(data);
+        nodeRow->setData(data);
+        nodeColumn->setData(data);
+        nodeBox->setData(data);
 
         this->index2node[indexForNode(sudoku_size, row, column, number)] = nodeCell;
       }

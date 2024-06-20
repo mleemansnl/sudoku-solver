@@ -8,7 +8,7 @@ import com.sudokusolver.libdlx.DancingLinkNode;
 import com.sudokusolver.libdlx.DLXSolver;
 
 /**
- * This Solver tales an input SudokuMatrix and solves to find a valid Sudoku
+ * This Solver takes an input SudokuMatrix and solves to find a valid Sudoku
  * Solution.
  *
  * This Solver wraps dlx::Solver and provides Sudoku-specific convenciences: -

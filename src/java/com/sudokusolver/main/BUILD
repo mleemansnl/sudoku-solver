@@ -16,7 +16,7 @@ java_library(
         ],
     ),
     deps = [
-        "//src/java/com/sudokusolver/libsudoku"
+        "//src/java/com/sudokusolver/libsudoku",
     ],
 )
 

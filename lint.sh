@@ -15,6 +15,16 @@ bazel build //src/java/... \
   --remote_download_regex='.*AspectRulesLint.*' \
   --@aspect_rules_lint//lint:fail_on_violation
 
+
+# Lint Golang code using golangci-lint
+# TODO check aspect_rules_lint v1.0.0-rc4 or upwards for new support
+# bazel build //src/go/... \
+#   --aspects //tools/lint:linters.bzl%golangci_lint \
+#   --norun_validations \
+#   --output_groups=rules_lint_report \
+#   --remote_download_regex='.*AspectRulesLint.*' \
+#   --@aspect_rules_lint//lint:fail_on_violation
+
 # Lint Markdown files using markdownlint
 
 # Note: the markdown rule exits with only an error, not showing the markdownlint 

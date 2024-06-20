@@ -1,0 +1,28 @@
+load("@rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "main_lib",
+    srcs = [
+        "SudokuProcessor.go",
+        "main.go",
+    ],
+    importpath = "github.com/mleemansnl/sudoku-solver/src/go/main",
+    visibility = ["//visibility:public"],
+    deps = ["//src/go/libsudoku"],
+)
+
+go_test(
+    name = "main_test",
+    size = "small",
+    srcs = ["SudokuProcessor_test.go"],
+    deps = [
+        ":main_lib",
+        "@com_github_stretchr_testify//suite",
+    ],
+)
+
+go_binary(
+    name = "main",
+    embed = [":main_lib"],
+    visibility = ["//visibility:public"],
+)

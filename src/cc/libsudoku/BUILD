@@ -5,8 +5,8 @@ cc_library(
         exclude = ["*-unittest.cpp"],
     ),
     hdrs = glob(["*.hpp"]),
-    deps = ["//src/cc/libdlx"],
     visibility = ["//visibility:public"],
+    deps = ["//src/cc/libdlx"],
 )
 
 cc_test(

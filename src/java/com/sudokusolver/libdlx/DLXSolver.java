@@ -53,8 +53,8 @@ public class DLXSolver {
     /**
      * Solve for the provided matrix using an Alogrithm X implementation.
      *
-     * @return If no solution is found, std::nullopt is returned. If a solution is
-     *         found, a Solution object is returned.
+     * @return If no solution is found, Optional.empty() is returned. If a solution
+     *         is found, a Solution object is returned.
      */
     public Optional<List<DancingLinkNode>> solve() {
         if (this.search()) {

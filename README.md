@@ -30,12 +30,13 @@ The solvers implemented offer:
 Reference implementations are provided in multiple programming languages and
 use [Bazel](https://bazel.build/) for building, testing, and linting:
 
-| Language   | Directory            | Test Framework | Linters      |
-| ---------- | -------------------- | -------------- | ------------ |
-| C++ 20     | [src/cc](src/cc)     | GTest 1.14     | clang-tidy   |
-| Java 17    | [src/java](src/java) | JUnit 5.10     | pmd          |
-| Markdown   |                      |                | markdownlint |
-| GH Actions |                      |                | actionlint   |
+| Language    | Directory            | Test Framework | Linters      |
+| ----------- | -------------------- | -------------- | ------------ |
+| C++ 20      | [src/cc](src/cc)     | GTest 1.14     | clang-tidy   |
+| Java 17     | [src/java](src/java) | JUnit 5.10     | pmd          |
+| Golang 1.22 | [src/go](src/go)     | Testify 1.9.0  | nogo         |
+| Markdown    |                      |                | markdownlint |
+| GH Actions  |                      |                | actionlint   |
 
 For more information on how Bazel is used, see [Bazel.md](Bazel.md).
 
@@ -45,7 +46,14 @@ To run the sudoku solver with an example input, use one of the example files and
 choose on of the implementations:
 
 ```shell
+ # C++ implementation
 cat examples/sudoku-9x9.txt | bazel run //src/cc/main:sudoku
+
+# Java implementation
+cat examples/sudoku-9x9.txt | bazel run //src/java/com/sudokusolver/main:Main
+
+# Golang implementation
+cat examples/sudoku-9x9.txt | bazel run //src/go/main
 ```
 
 The tool takes an input sudoku from stdin and writes the solution to stdout.
@@ -98,6 +106,37 @@ For the dev container environment, run all linters via this script:
 
 ```shell
 ./lint.sh
+```
+
+### Managing Build files and External Dependencies
+
+#### Updating Build files with Gazelle
+
+For the golang implementation, Gazelle is used for Bazel BUILD file generation.
+Upon changing golang code, run the following command:
+
+```shell
+bazel run //:gazelle
+```
+
+#### Updating Golang dependencies
+
+External golang dependencies are managed by Gazelle via go mod and are
+listed explicitly in MODULE.bazel.
+Upon adding or upgradig a new external golang dependency, run:
+
+```shell
+bazel run @rules_go//go -- mod tidy
+```
+
+#### Updating Java dependencies
+
+External java dependencies are managed by bzlmod via maven/coursier and are
+listed explicitly in MODULE.bazel.
+Upon adding or upgradig a new external java dependency, run:
+
+```shell
+REPIN=1 bazel run @maven//:pin
 ```
 
 ## License

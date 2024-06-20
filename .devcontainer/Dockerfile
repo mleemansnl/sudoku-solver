@@ -40,6 +40,8 @@ ENV PATH="${PATH}:/usr/local/go/bin"
 
 RUN go version
 
+RUN go install golang.org/x/tools/gopls@latest
+
 ###
 # Install Node via NVM
 ###

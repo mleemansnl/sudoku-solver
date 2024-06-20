@@ -16,7 +16,8 @@
                 "vscjava.vscode-java-pack",
                 "yzhang.markdown-all-in-one",
                 "GitHub.vscode-github-actions",
-                "redhat.vscode-yaml"
+                "redhat.vscode-yaml",
+                "golang.Go"
             ]
         }
     }
