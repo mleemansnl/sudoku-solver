@@ -238,7 +238,7 @@ public class DancingLinkNode {
     }
 
     /**
-     * Returns the data element associated with this node. This data element can be
+     * Sets the data element associated with this node. This data element can be
      * used as meta-data for bookkeeping when modelling exact cover problems.
      */
     public void setData(Object data) {
@@ -246,7 +246,7 @@ public class DancingLinkNode {
     }
 
     /**
-     * Sets the data element associated with this node. This data element can be
+     * Returns the data element associated with this node. This data element can be
      * used as meta-data for bookkeeping when modelling exact cover problems.
      */
     public Object getData() {

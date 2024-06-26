@@ -35,6 +35,7 @@ use [Bazel](https://bazel.build/) for building, testing, and linting:
 | C++ 20      | [src/cc](src/cc)     | GTest 1.14     | clang-tidy   |
 | Java 17     | [src/java](src/java) | JUnit 5.10     | pmd          |
 | Golang 1.22 | [src/go](src/go)     | Testify 1.9.0  | nogo         |
+| Python 3.11 | [src/py](src/py)     | pytest 8.2.2   | TODO         |
 | Markdown    |                      |                | markdownlint |
 | GH Actions  |                      |                | actionlint   |
 
@@ -137,6 +138,16 @@ Upon adding or upgradig a new external java dependency, run:
 
 ```shell
 REPIN=1 bazel run @maven//:pin
+```
+
+#### Updating Python dependencies
+
+External python dependencies are managed by bzlmod via pip and are
+listed explicitly in requirements.in / requirements.txt .
+Upon adding or upgradig a new external python dependency to requirements.in, run:
+
+```shell
+bazel run //:requirements.update
 ```
 
 ## License

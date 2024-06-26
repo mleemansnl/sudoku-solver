@@ -17,7 +17,9 @@
                 "yzhang.markdown-all-in-one",
                 "GitHub.vscode-github-actions",
                 "redhat.vscode-yaml",
-                "golang.Go"
+                "golang.Go",
+                "ms-python.python",
+                "ms-python.black-formatter"
             ]
         }
     }
