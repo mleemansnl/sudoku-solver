@@ -72,3 +72,26 @@ use_repo(
 
 # The nogo tool is a static analyzer for Go code that is run as part of compilation
 go_sdk.nogo(nogo = "//:nogo")
+
+###
+# Dependencies for Python code
+###
+bazel_dep(name = "rules_python", version = "0.33.2")
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python.toolchain(
+    configure_coverage_tool = True,
+    python_version = "3.11",
+)
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+
+# The requirements_lock.txt is updated by pip-compile
+# Note: After changing python dependencies, regenerate requirements.txt using:
+#   $ bazel run //:requirements.update
+pip.parse(
+    hub_name = "pip",
+    python_version = "3.11",
+    requirements_lock = "//:requirements.txt",
+)
+
+use_repo(pip, "pip")
