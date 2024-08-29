@@ -18,6 +18,9 @@ markdown_library(
 # Export PMD settings for Java linting
 exports_files(["pmd.xml"])
 
+# Export ktlint settings for Kotlin linting
+exports_files(["ktlint-baseline.xml", ".editorconfig"])
+
 # Top-level target for Golang Gazelle Bazel BUILD file generation
 gazelle(name = "gazelle")
 

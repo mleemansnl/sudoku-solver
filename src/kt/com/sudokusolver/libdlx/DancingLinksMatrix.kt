@@ -1,4 +1,4 @@
-package com.sudokusolver.libdlx;
+package com.sudokusolver.libdlx
 
 /**
  * The DancingLinksMatrix represents a sparse matrix using the Dancing Links
@@ -20,7 +20,7 @@ package com.sudokusolver.libdlx;
  * DancingLinksMatrix::newHeader() .
  */
 class DancingLinksMatrix {
-
+    // Root header row node, representing the start of the header row list.
     val root: DancingLinkHeader = DancingLinkHeader()
 
     /**
@@ -38,6 +38,4 @@ class DancingLinksMatrix {
         header.insertLeftOf(this.root)
         return header
     }
-
-
 }

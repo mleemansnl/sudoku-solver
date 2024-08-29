@@ -34,7 +34,7 @@ use [Bazel](https://bazel.build/) for building, testing, and linting:
 | ----------- | -------------------- | -------------- | ------------ |
 | C++ 20      | [src/cc](src/cc)     | GTest 1.14     | clang-tidy   |
 | Java 17     | [src/java](src/java) | JUnit 5.10     | pmd          |
-| Kotlin      | [src/kt](src/kt)     | JUnit 5.10     |              |
+| Kotlin      | [src/kt](src/kt)     | JUnit 5.10     | ktlint       |
 | Golang 1.22 | [src/go](src/go)     | Testify 1.9.0  | nogo         |
 | Markdown    |                      |                | markdownlint |
 | GH Actions  |                      |                | actionlint   |

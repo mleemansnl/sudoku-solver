@@ -19,7 +19,6 @@ package com.sudokusolver.libdlx
  * for bookkeeping when modelling exact cover problems.
  */
 open class DancingLinkNode(initHeader: DancingLinkHeader? = null) {
-
     // References to the four neighbors in the two-dimensional doubly linked list.
     var up: DancingLinkNode = this
     var down: DancingLinkNode = this
@@ -41,7 +40,10 @@ open class DancingLinkNode(initHeader: DancingLinkHeader? = null) {
          * This convinience method will insert each node into the linked list starting at root. The
          * left/right references are updated to reflect the order of nodes provided to this methd.
          */
-        fun makeRow(root: DancingLinkNode, vararg nodes: DancingLinkNode) {
+        fun makeRow(
+            root: DancingLinkNode,
+            vararg nodes: DancingLinkNode,
+        ) {
             for (node in nodes) {
                 node.insertLeftOf(root)
             }

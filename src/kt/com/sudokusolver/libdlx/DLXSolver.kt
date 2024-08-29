@@ -30,7 +30,6 @@ package com.sudokusolver.libdlx
  * reinsert operations in \link DancingLinkNode.
  */
 public class DLXSolver(initMatrix: DancingLinksMatrix) {
-
     // The matrix modelling the exact cover problem
     private val matrix: DancingLinksMatrix = initMatrix
 
@@ -87,7 +86,7 @@ public class DLXSolver(initMatrix: DancingLinksMatrix) {
         if (root.right === root) {
             // no columns left, so we have a valid solution
             // the solution is already stored in solution as part of the cover actions
-            return true;
+            return true
         }
 
         // no solution found, so we continue our search
@@ -96,7 +95,7 @@ public class DLXSolver(initMatrix: DancingLinksMatrix) {
 
         // check if this is a good solution
         if (targetHeader === null) {
-            return false;
+            return false
         }
 
         // cover this header column
@@ -119,7 +118,7 @@ public class DLXSolver(initMatrix: DancingLinksMatrix) {
 
             // recursive search with this row in the solution and all it's columns covered
             if (this.search()) {
-                return true;
+                return true
             }
 
             // remove row from solution, so we may try with the next row
@@ -151,7 +150,7 @@ public class DLXSolver(initMatrix: DancingLinksMatrix) {
         val root = this.matrix.root
 
         // find column with lowest count
-        var targetHeader: DancingLinkHeader?  = null;
+        var targetHeader: DancingLinkHeader? = null
         var minCount = Int.MAX_VALUE
 
         var header = root.right.header
@@ -166,7 +165,7 @@ public class DLXSolver(initMatrix: DancingLinksMatrix) {
             // advance iterator
             header = header.right.header
         }
-        
+
         return targetHeader
     }
 
@@ -203,7 +202,6 @@ public class DLXSolver(initMatrix: DancingLinksMatrix) {
          * DancingLinkNode.
          */
         fun uncover(header: DancingLinkHeader) {
-
             // put back all rows in the column into other columns they were in
             var row = header.up
             while (row !== header) {
@@ -221,5 +219,4 @@ public class DLXSolver(initMatrix: DancingLinksMatrix) {
             header.reinsertHorizontal()
         }
     }
-
 }

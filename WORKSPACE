@@ -1,7 +1,7 @@
 # Note: includes dependencies not converted to bzlmod yet
 
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 
 ###
 # Dependencies for C++ code
@@ -29,6 +29,20 @@ fetch_pmd()
 #     strip_prefix = "pmd-bin-7.2.0/lib",
 #     url = "https://github.com/pmd/pmd/releases/download/pmd_releases/7.2.0/pmd-dist-7.2.0-bin.zip",
 # )
+
+###
+# Dependencies for Kotlin code
+###
+
+# load("@aspect_rules_lint//lint:ktlint.bzl", "fetch_ktlint")
+
+# fetch_ktlint()
+http_file(
+    name = "com_github_pinterest_ktlint",
+    sha256 = "2e28cf46c27d38076bf63beeba0bdef6a845688d6c5dccd26505ce876094eb92",
+    url = "https://github.com/pinterest/ktlint/releases/download/1.2.1/ktlint",
+    executable = True,
+)
 
 ###
 # Dependencies for Golang code

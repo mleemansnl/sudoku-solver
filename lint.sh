@@ -15,6 +15,13 @@ bazel build //src/java/... \
   --remote_download_regex='.*AspectRulesLint.*' \
   --@aspect_rules_lint//lint:fail_on_violation
 
+# Lint Kotlin code using ktlint
+bazel build //src/kt/... \
+  --aspects //tools/lint:linters.bzl%ktlint \
+  --norun_validations \
+  --output_groups=rules_lint_report \
+  --remote_download_regex='.*AspectRulesLint.*' \
+  --@aspect_rules_lint//lint:fail_on_violation
 
 # Lint Golang code using golangci-lint
 # TODO check aspect_rules_lint v1.0.0-rc4 or upwards for new support

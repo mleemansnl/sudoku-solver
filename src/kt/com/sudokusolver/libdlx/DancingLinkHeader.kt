@@ -1,7 +1,6 @@
 package com.sudokusolver.libdlx
 
-class DancingLinkHeader: DancingLinkNode() {
-
+class DancingLinkHeader : DancingLinkNode() {
     // Counter for the number of nodes in this header's vertical list.
     var count: Int = 0
         private set
@@ -21,7 +20,7 @@ class DancingLinkHeader: DancingLinkNode() {
      *       node)
      * @post count is increased to reflect this header containing an additional node
      */
-    fun newNode() : DancingLinkNode {
+    fun newNode(): DancingLinkNode {
         var node = DancingLinkNode(this)
         node.insertUpOf(this)
         this.incCount()
