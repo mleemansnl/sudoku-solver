@@ -33,3 +33,11 @@ eclipse-*bin/
 .bazelversion
 # User-specific .bazelrc
 user.bazelrc
+# Gradle
+build
+.gradle
+.idea
+.kotlin
+local.properties
+*.iml
+/bazel-*

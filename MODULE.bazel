@@ -50,6 +50,12 @@ maven.install(
 use_repo(maven, "maven", "unpinned_maven")
 
 ###
+# Dependencies for Kotlin code
+###
+
+bazel_dep(name = "rules_kotlin", version = "1.9.6")
+
+###
 # Dependencies for Golang code
 ###
 

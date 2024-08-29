@@ -17,7 +17,11 @@
                 "yzhang.markdown-all-in-one",
                 "GitHub.vscode-github-actions",
                 "redhat.vscode-yaml",
-                "golang.Go"
+                "golang.Go",
+                "mathiasfrohlich.Kotlin",
+                "fwcd.kotlin",
+                "naco-siren.gradle-language",
+                "redhat.java"
             ]
         }
     }
